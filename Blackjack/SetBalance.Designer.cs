@@ -94,7 +94,7 @@ namespace Blackjack
             this.Controls.Add(this.textBoxMoney);
             this.Controls.Add(this.labelSetBalance);
             this.Name = "SetBalance";
-            this.Text = "Form2";
+            this.Text = "Start";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

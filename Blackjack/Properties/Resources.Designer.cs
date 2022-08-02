@@ -451,12 +451,12 @@ namespace Blackjack.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] bcard {
+        internal static System.Drawing.Bitmap backcard {
             get {
-                object obj = ResourceManager.GetObject("bcard", resourceCulture);
-                return ((byte[])(obj));
+                object obj = ResourceManager.GetObject("backcard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

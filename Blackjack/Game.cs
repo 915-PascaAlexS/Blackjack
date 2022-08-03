@@ -149,6 +149,7 @@ namespace Blackjack
         { 
             return random.Next(min, max);
         }
+
         private void buttonRestart_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 13; i++)
@@ -175,6 +176,16 @@ namespace Blackjack
             pictureBoxP8.Visible = false;
             pictureBoxP9.Visible = false;
 
+            pictureBoxD1.Visible = false;
+            pictureBoxD2.Visible = false;
+            pictureBoxD3.Visible = false;
+            pictureBoxD4.Visible = false;
+            pictureBoxD5.Visible = false;
+            pictureBoxD6.Visible = false;
+            pictureBoxD7.Visible = false;
+            pictureBoxD8.Visible = false;
+            pictureBoxD9.Visible = false;
+
             playerCount = 0;
             dealerCount = 0;
             playerCards = 2;
@@ -185,7 +196,7 @@ namespace Blackjack
             yD = RandomNumber(0, 3);
             if (xD < 9)
             {
-                dealerCount =  xD + 1; 
+                dealerCount = xD + 1; 
             }
             else
             {
@@ -209,11 +220,11 @@ namespace Blackjack
 
             if (xP < 9)
             {
-                playerCount = playerCount + xD + 1;
+                playerCount = xP + 1;
             }
             else
             {
-                playerCount = playerCount + 10;
+                playerCount = 10;
             }
 
             used[xP, yP] = true;
@@ -265,7 +276,7 @@ namespace Blackjack
         {
             if (playerCount < 21)
             {
-                int xP, yP, score;
+                int xP, yP;
                 switch (playerCards)
                 {
                     case 2:
@@ -289,6 +300,8 @@ namespace Blackjack
                             playerCount = playerCount + 10;
                         }
 
+                        labelScorePlayer.Text = playerCount.ToString();
+
                         used[xP, yP] = true;
                         pictureBoxP6.Image = img[xP, yP];
 
@@ -300,10 +313,18 @@ namespace Blackjack
                             buttonStand.Enabled = false;
 
                             DialogResult dialog = MessageBox.Show("YOU LOST:((((");
-                        }
 
-                        score = int.Parse(labelScorePlayer.Text) + playerCount;
-                        labelScorePlayer.Text = score.ToString();
+                            labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                        }
+                        else if (playerCount == 21)
+                        {
+                            buttonHit.Enabled = false;
+                            buttonStand.Enabled = false;
+
+                            DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                        }
 
                         break;
 
@@ -324,6 +345,8 @@ namespace Blackjack
                             playerCount = playerCount + 10;
                         }
 
+                        labelScorePlayer.Text = playerCount.ToString();
+
                         used[xP, yP] = true;
                         pictureBoxP7.Image = img[xP, yP];
                         pictureBoxP7.Visible = true;
@@ -336,6 +359,17 @@ namespace Blackjack
                             buttonStand.Enabled = false;
 
                             DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                        }
+                        else if (playerCount == 21)
+                        {
+                            buttonHit.Enabled = false;
+                            buttonStand.Enabled = false;
+
+                            DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
                         }
 
                         break;
@@ -363,6 +397,9 @@ namespace Blackjack
                             playerCount = playerCount + 10;
                         }
 
+
+                        labelScorePlayer.Text = playerCount.ToString();
+
                         used[xP, yP] = true;
                         pictureBoxP7.Image = img[xP, yP];
 
@@ -374,6 +411,17 @@ namespace Blackjack
                             buttonStand.Enabled = false;
 
                             DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                        }
+                        else if (playerCount == 21)
+                        {
+                            buttonHit.Enabled = false;
+                            buttonStand.Enabled = false;
+                           
+                            DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
                         }
 
                         break;
@@ -395,6 +443,8 @@ namespace Blackjack
                             playerCount = playerCount + 10;
                         }
 
+                        labelScorePlayer.Text = playerCount.ToString();
+
                         used[xP, yP] = true;
                         pictureBoxP8.Image = img[xP, yP];
                         pictureBoxP8.Visible = true;
@@ -407,6 +457,17 @@ namespace Blackjack
                             buttonStand.Enabled = false;
 
                             DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                        }
+                        else if (playerCount == 21)
+                        {
+                            buttonHit.Enabled = false;
+                            buttonStand.Enabled = false;
+
+                            DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
                         }
 
                         break;
@@ -435,6 +496,8 @@ namespace Blackjack
                             playerCount = playerCount + 10;
                         }
 
+                        labelScorePlayer.Text = playerCount.ToString();
+
                         used[xP, yP] = true;
                         pictureBoxP8.Image = img[xP, yP];
 
@@ -446,6 +509,17 @@ namespace Blackjack
                             buttonStand.Enabled = false;
 
                             DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                        }
+                        else if (playerCount == 21)
+                        {
+                            buttonHit.Enabled = false;
+                            buttonStand.Enabled = false;
+
+                            DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
                         }
 
                         break;
@@ -467,6 +541,8 @@ namespace Blackjack
                             playerCount = playerCount + 10;
                         }
 
+                        labelScorePlayer.Text = playerCount.ToString();
+
                         used[xP, yP] = true;
                         pictureBoxP9.Image = img[xP, yP];
                         pictureBoxP9.Visible = true;
@@ -479,7 +555,19 @@ namespace Blackjack
                             buttonStand.Enabled = false;
 
                             DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
                         }
+                        else if (playerCount == 21)
+                        {
+                            buttonHit.Enabled = false;
+                            buttonStand.Enabled = false;
+
+                            DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                        }
+
                         break;
 
                     case 8:
@@ -507,6 +595,8 @@ namespace Blackjack
                             playerCount = playerCount + 10;
                         }
 
+                        labelScorePlayer.Text = playerCount.ToString();
+
                         used[xP, yP] = true;
                         pictureBoxP9.Image = img[xP, yP];
 
@@ -518,24 +608,420 @@ namespace Blackjack
                             buttonStand.Enabled = false;
 
                             DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
                         }
+                        else if (playerCount == 21)
+                        {                            
+                            buttonHit.Enabled = false;
+                            buttonStand.Enabled = false;
+
+                            DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                            labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                        }
+
                         break;
                 }
-            }
-            else if(playerCount == 21)
-            {
-                DialogResult dialog = MessageBox.Show("YOU WON!!!");
-                       
-                buttonHit.Enabled = false;
-                buttonStand.Enabled = false;
-            }
-
-           
+            }          
         }
 
         private void buttonStand_Click(object sender, EventArgs e)
         {
+            while(dealerCount < 17)
+            {
+                if(dealerCount < 17)
+                {
+                    int xD, yD;
+                    switch (dealerCards)
+                    {
+                        case 1:
 
+                            buttonHit.Enabled = false;
+
+                            xD = RandomNumber(0, 12);
+                            yD = RandomNumber(0, 3);
+                            if (xD < 9)
+                            {
+                                dealerCount = dealerCount + xD + 1;
+                            }
+                            else
+                            {
+                                dealerCount = dealerCount + 10;
+                            }
+
+                            labelScoreDealer.Text = dealerCount.ToString();
+
+                            used[xD, yD] = true;
+                            pictureBoxD6.Image = img[xD, yD];
+
+                            dealerCards++;
+
+                            if (dealerCount == 21 ||(dealerCount < 21 && dealerCount > playerCount && dealerCount >= 17) || dealerCount == playerCount)
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                            }
+                            else if (dealerCount > 21 || (dealerCount < 21 && dealerCount >= 17 && dealerCount < playerCount))
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                            }
+                            
+                            break;
+
+                        case 2:
+
+                            pictureBoxD4.Image = pictureBoxD5.Image;
+                            pictureBoxD4.Visible = true;
+                            pictureBoxD5.Image = pictureBoxD6.Image;
+
+                            xD = RandomNumber(0, 12);
+                            yD = RandomNumber(0, 3);
+                            if (xD < 9)
+                            {
+                                dealerCount = dealerCount + xD + 1;
+                            }
+                            else
+                            {
+                                dealerCount = dealerCount + 10;
+                            }
+
+                            labelScoreDealer.Text = dealerCount.ToString();
+
+                            used[xD, yD] = true;
+                            pictureBoxD6.Image = img[xD, yD];
+
+                            dealerCards++;
+
+                            if (dealerCount == 21 || (dealerCount < 21 && dealerCount > playerCount && dealerCount >= 17) || dealerCount == playerCount)
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                            }
+                            else if (dealerCount > 21 || (dealerCount < 21 && dealerCount >= 17 && dealerCount < playerCount))
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                            }
+
+                            break;
+
+                        case 3:
+
+                            xD = RandomNumber(0, 12);
+                            yD = RandomNumber(0, 3);
+                            if (xD < 9)
+                            {
+                                dealerCount = dealerCount + xD + 1;
+                            }
+                            else
+                            {
+                                dealerCount = dealerCount + 10;
+                            }
+
+                            labelScoreDealer.Text = dealerCount.ToString();
+
+                            used[xD, yD] = true;
+                            pictureBoxD7.Image = img[xD, yD];
+                            pictureBoxD7.Visible = true;
+
+                            dealerCards++;
+
+                            if (dealerCount == 21 || (dealerCount < 21 && dealerCount > playerCount && dealerCount >= 17) || dealerCount == playerCount)
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                            }
+                            else if (dealerCount > 21 || (dealerCount < 21 && dealerCount >= 17 && dealerCount < playerCount))
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                            }
+                           
+                            break;
+
+                        case 4:
+
+                            pictureBoxD3.Image = pictureBoxD4.Image;
+                            pictureBoxD3.Visible = true;
+                            pictureBoxD4.Image = pictureBoxD5.Image;
+                            pictureBoxD5.Image = pictureBoxD6.Image;
+                            pictureBoxD6.Image = pictureBoxD7.Image;
+
+                            xD = RandomNumber(0, 12);
+                            yD = RandomNumber(0, 3);
+                            if (xD < 9)
+                            {
+                                dealerCount = dealerCount + xD + 1;
+                            }
+                            else
+                            {
+                                dealerCount = dealerCount + 10;
+                            }
+
+                            labelScoreDealer.Text = dealerCount.ToString();
+
+                            used[xD, yD] = true;
+                            pictureBoxD7.Image = img[xD, yD];
+
+                            dealerCards++;
+
+                            if (dealerCount == 21 || (dealerCount < 21 && dealerCount > playerCount && dealerCount >= 17) || dealerCount == playerCount)
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                            }
+                            else if (dealerCount > 21 || (dealerCount < 21 && dealerCount >= 17 && dealerCount < playerCount))
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                            }
+
+                            break;
+
+                        case 5:
+
+                            xD = RandomNumber(0, 12);
+                            yD = RandomNumber(0, 3);
+                            if (xD < 9)
+                            {
+                                dealerCount = dealerCount + xD + 1;
+                            }
+                            else
+                            {
+                                dealerCount = dealerCount + 10;
+                            }
+
+                            labelScoreDealer.Text = dealerCount.ToString();
+
+                            used[xD, yD] = true;
+                            pictureBoxD8.Image = img[xD, yD];
+                            pictureBoxD8.Visible = true;
+
+                            dealerCards++;
+
+                            if (dealerCount == 21 || (dealerCount < 21 && dealerCount > playerCount && dealerCount >= 17) || dealerCount == playerCount)
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                            }
+                            else if (dealerCount > 21 || (dealerCount < 21 && dealerCount >= 17 && dealerCount < playerCount))
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                            }
+
+                            break;
+
+                        case 6:
+
+                            pictureBoxD2.Image = pictureBoxD3.Image;
+                            pictureBoxD2.Visible = true;
+                            pictureBoxD3.Image = pictureBoxD4.Image;
+                            pictureBoxD4.Image = pictureBoxD5.Image;
+                            pictureBoxD5.Image = pictureBoxD6.Image;
+                            pictureBoxD6.Image = pictureBoxD7.Image;
+                            pictureBoxD7.Image = pictureBoxD8.Image;
+
+                            xD = RandomNumber(0, 12);
+                            yD = RandomNumber(0, 3);
+                            if (xD < 9)
+                            {
+                                dealerCount = dealerCount + xD + 1;
+                            }
+                            else
+                            {
+                                dealerCount = dealerCount + 10;
+                            }
+
+                            labelScoreDealer.Text = dealerCount.ToString();
+
+                            used[xD, yD] = true;
+                            pictureBoxD8.Image = img[xD, yD];
+
+                            dealerCards++;
+
+                            if (dealerCount == 21 || (dealerCount < 21 && dealerCount > playerCount && dealerCount >= 17) || dealerCount == playerCount)
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                            }
+                            else if (dealerCount > 21 || (dealerCount < 21 && dealerCount >= 17 && dealerCount < playerCount))
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                            }
+                           
+                            break;
+
+                        case 7:
+
+                            xD = RandomNumber(0, 12);
+                            yD = RandomNumber(0, 3);
+                            if (xD < 9)
+                            {
+                                dealerCount = dealerCount + xD + 1;
+                            }
+                            else
+                            {
+                                dealerCount = dealerCount + 10;
+                            }
+
+                            labelScoreDealer.Text = dealerCount.ToString();
+
+                            used[xD, yD] = true;
+                            pictureBoxD9.Image = img[xD, yD];
+                            pictureBoxD9.Visible = true;
+
+                            dealerCards++;
+
+                            if (dealerCount == 21 || (dealerCount < 21 && dealerCount > playerCount && dealerCount >= 17) || dealerCount == playerCount)
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                            }
+                            else if (dealerCount > 21 || (dealerCount < 21 && dealerCount >= 17 && dealerCount < playerCount))
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                            }
+                          
+                            break;
+
+                        case 8:
+
+                            pictureBoxD1.Image = pictureBoxD2.Image;
+                            pictureBoxD1.Visible = true;
+                            pictureBoxD2.Image = pictureBoxD3.Image;
+                            pictureBoxD3.Image = pictureBoxD4.Image;
+                            pictureBoxD4.Image = pictureBoxD5.Image;
+                            pictureBoxD5.Image = pictureBoxD6.Image;
+                            pictureBoxD6.Image = pictureBoxD7.Image;
+                            pictureBoxD7.Image = pictureBoxD8.Image;
+                            pictureBoxD8.Image = pictureBoxD9.Image;
+
+                            xD = RandomNumber(0, 12);
+                            yD = RandomNumber(0, 3);
+                            if (xD < 9)
+                            {
+                                dealerCount = dealerCount + xD + 1;
+                            }
+                            else
+                            {
+                                dealerCount = dealerCount + 10;
+                            }
+
+                            labelScoreDealer.Text = dealerCount.ToString();
+
+                            used[xD, yD] = true;
+                            pictureBoxD9.Image = img[xD, yD];
+
+                            dealerCards++;
+
+                            if (dealerCount == 21 || (dealerCount < 21 && dealerCount > playerCount && dealerCount >= 17) || dealerCount == playerCount)
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                            }
+                            else if (dealerCount > 21 || (dealerCount < 21 && dealerCount >= 17 && dealerCount < playerCount))
+                            {
+                                buttonHit.Enabled = false;
+                                buttonStand.Enabled = false;
+
+                                DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                                labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                            }
+
+                            break;
+                    }
+                    System.Threading.Thread.Sleep(500);
+                }
+                else
+                {
+                    if((dealerCount < 21 && dealerCount > playerCount) || dealerCount == playerCount)
+                    {
+                        buttonHit.Enabled = false;
+                        buttonStand.Enabled = false;
+
+                        DialogResult dialog = MessageBox.Show("YOU LOST:((((");
+
+                        labelMoney.Text = (int.Parse(labelMoney.Text) - moneyBet).ToString();
+                    }
+                    else if (dealerCount > 21 || (dealerCount < 21 && dealerCount >= 17 && dealerCount < playerCount))
+                    {
+                        buttonHit.Enabled = false;
+                        buttonStand.Enabled = false;
+
+                        DialogResult dialog = MessageBox.Show("YOU WON!!!");
+
+                        labelMoney.Text = (int.Parse(labelMoney.Text) + moneyBet).ToString();
+                    }
+
+                    break;
+                }
+            }
         }
     }
 }

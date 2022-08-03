@@ -385,7 +385,7 @@ namespace Blackjack
             this.labelScorePlayer.BackColor = System.Drawing.Color.Indigo;
             this.labelScorePlayer.Font = new System.Drawing.Font("Showcard Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelScorePlayer.ForeColor = System.Drawing.Color.White;
-            this.labelScorePlayer.Location = new System.Drawing.Point(554, 360);
+            this.labelScorePlayer.Location = new System.Drawing.Point(571, 360);
             this.labelScorePlayer.Name = "labelScorePlayer";
             this.labelScorePlayer.Size = new System.Drawing.Size(0, 27);
             this.labelScorePlayer.TabIndex = 30;

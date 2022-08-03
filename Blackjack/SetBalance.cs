@@ -27,9 +27,12 @@ namespace Blackjack
         { 
             if(textBoxMoney.Text.ToString() != "")
             { if (isNumber(textBoxMoney.Text.ToString()))
-                {
+                {                    
                     money = int.Parse(textBoxMoney.Text);
-                    this.Close();
+                    if (money > 0)
+                    {
+                        this.Close();
+                    }
                 }
             }
         }

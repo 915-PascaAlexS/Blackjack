@@ -151,118 +151,127 @@ namespace Blackjack
         }
 
         private void buttonRestart_Click(object sender, EventArgs e)
-        {          
-            if(int.Parse(labelMoney.Text) == 0)
+        {
+            if (int.Parse(textBoxBet.Text) <= 0)
             {
-                DialogResult dialog = MessageBox.Show("You ran OUT of money!");
+                DialogResult dialog = MessageBox.Show("Insert the bet");
+                buttonHit.Enabled = false;
+                buttonStand.Enabled = false;
             }
-            else if (int.Parse(labelMoney.Text) < moneyBet)
+            else
             {
-                DialogResult dialog = MessageBox.Show("Insufficient founds!");
-            }
-            else if(int.Parse(labelMoney.Text) >= moneyBet)
-            {
-                for (int i = 0; i < 13; i++)
+                if (int.Parse(labelMoney.Text) == 0)
                 {
-                    for (int j = 0; j < 4; j++)
+                    DialogResult dialog = MessageBox.Show("You ran OUT of money!");
+                }
+                else if (int.Parse(labelMoney.Text) < moneyBet)
+                {
+                    DialogResult dialog = MessageBox.Show("Insufficient founds!");
+                }
+                else if (int.Parse(labelMoney.Text) >= moneyBet)
+                {
+                    for (int i = 0; i < 13; i++)
                     {
-                        used[i, j] = false;
+                        for (int j = 0; j < 4; j++)
+                        {
+                            used[i, j] = false;
+                        }
                     }
+
+                    buttonHit.Visible = true;
+                    buttonStand.Visible = true;
+
+                    buttonHit.Enabled = true;
+                    buttonStand.Enabled = true;
+
+                    pictureBoxP1.Visible = false;
+                    pictureBoxP2.Visible = false;
+                    pictureBoxP3.Visible = false;
+                    pictureBoxP4.Visible = false;
+                    pictureBoxP5.Visible = false;
+                    pictureBoxP6.Visible = false;
+                    pictureBoxP7.Visible = false;
+                    pictureBoxP8.Visible = false;
+                    pictureBoxP9.Visible = false;
+
+                    pictureBoxD1.Visible = false;
+                    pictureBoxD2.Visible = false;
+                    pictureBoxD3.Visible = false;
+                    pictureBoxD4.Visible = false;
+                    pictureBoxD5.Visible = false;
+                    pictureBoxD6.Visible = false;
+                    pictureBoxD7.Visible = false;
+                    pictureBoxD8.Visible = false;
+                    pictureBoxD9.Visible = false;
+
+                    playerCount = 0;
+                    dealerCount = 0;
+                    playerCards = 2;
+                    dealerCards = 1;
+
+                    int xD, yD, xP, yP;
+                    xD = RandomNumber(0, 12);
+                    yD = RandomNumber(0, 3);
+                    if (xD < 9)
+                    {
+                        dealerCount = xD + 1;
+                    }
+                    else
+                    {
+                        dealerCount = 10;
+                    }
+
+                    used[xD, yD] = true;
+                    pictureBoxD5.Image = img[xD, yD];
+                    pictureBoxD5.Visible = true;
+
+                    Bitmap back = new Bitmap(Properties.Resources.backcard);
+                    pictureBoxD6.Image = back;
+                    pictureBoxD6.Visible = true;
+
+                    do
+                    {
+                        xP = RandomNumber(0, 12);
+                        yP = RandomNumber(0, 3);
+
+                    } while (used[xP, yP] == true);
+
+                    if (xP < 9)
+                    {
+                        playerCount = xP + 1;
+                    }
+                    else
+                    {
+                        playerCount = 10;
+                    }
+
+                    used[xP, yP] = true;
+                    pictureBoxP5.Image = img[xP, yP];
+                    pictureBoxP5.Visible = true;
+
+                    do
+                    {
+                        xP = RandomNumber(0, 12);
+                        yP = RandomNumber(0, 3);
+                    } while (used[xP, yP] == true);
+
+                    if (xP < 9)
+                    {
+                        playerCount = playerCount + xP + 1;
+                    }
+                    else
+                    {
+                        playerCount = playerCount + 10;
+                    }
+
+                    used[xP, yP] = true;
+                    pictureBoxP6.Image = img[xP, yP];
+                    pictureBoxP6.Visible = true;
+
+                    labelScoreDealer.Text = dealerCount.ToString();
+                    labelScorePlayer.Text = playerCount.ToString();
+
                 }
-
-                buttonHit.Visible = true;
-                buttonStand.Visible = true;
-
-                buttonHit.Enabled = true;
-                buttonStand.Enabled = true;
-
-                pictureBoxP1.Visible = false;
-                pictureBoxP2.Visible = false;
-                pictureBoxP3.Visible = false;
-                pictureBoxP4.Visible = false;
-                pictureBoxP5.Visible = false;
-                pictureBoxP6.Visible = false;
-                pictureBoxP7.Visible = false;
-                pictureBoxP8.Visible = false;
-                pictureBoxP9.Visible = false;
-
-                pictureBoxD1.Visible = false;
-                pictureBoxD2.Visible = false;
-                pictureBoxD3.Visible = false;
-                pictureBoxD4.Visible = false;
-                pictureBoxD5.Visible = false;
-                pictureBoxD6.Visible = false;
-                pictureBoxD7.Visible = false;
-                pictureBoxD8.Visible = false;
-                pictureBoxD9.Visible = false;
-
-                playerCount = 0;
-                dealerCount = 0;
-                playerCards = 2;
-                dealerCards = 1;
-
-                int xD, yD, xP, yP;
-                xD = RandomNumber(0, 12);
-                yD = RandomNumber(0, 3);
-                if (xD < 9)
-                {
-                    dealerCount = xD + 1;
-                }
-                else
-                {
-                    dealerCount = 10;
-                }
-
-                used[xD, yD] = true;
-                pictureBoxD5.Image = img[xD, yD];
-                pictureBoxD5.Visible = true;
-
-                Bitmap back = new Bitmap(Properties.Resources.backcard);
-                pictureBoxD6.Image = back;
-                pictureBoxD6.Visible = true;
-
-                do
-                {
-                    xP = RandomNumber(0, 12);
-                    yP = RandomNumber(0, 3);
-
-                } while (used[xP, yP] == true);
-
-                if (xP < 9)
-                {
-                    playerCount = xP + 1;
-                }
-                else
-                {
-                    playerCount = 10;
-                }
-
-                used[xP, yP] = true;
-                pictureBoxP5.Image = img[xP, yP];
-                pictureBoxP5.Visible = true;
-
-                do
-                {
-                    xP = RandomNumber(0, 12);
-                    yP = RandomNumber(0, 3);
-                } while (used[xP, yP] == true);
-
-                if (xP < 9)
-                {
-                    playerCount = playerCount + xP + 1;
-                }
-                else
-                {
-                    playerCount = playerCount + 10;
-                }
-
-                used[xP, yP] = true;
-                pictureBoxP6.Image = img[xP, yP];
-                pictureBoxP6.Visible = true;
-
-                labelScoreDealer.Text = dealerCount.ToString();
-                labelScorePlayer.Text = playerCount.ToString();
-
             }
         }
 
